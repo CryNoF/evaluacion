@@ -68,6 +68,10 @@ src/
 │       └── application.yml      # Configuración de la aplicación
 └── test/                       # Pruebas unitarias y de integración
 ```
+## Diagrama de solucion
+
+![Diagrama](diagrama.png)
+
 
 ## Endpoints Principales
 
