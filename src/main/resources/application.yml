@@ -1,0 +1,61 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: camilonavarrete
+    password: evaluacion
+    initialization-mode: always
+  
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
+      continue-on-error: true
+
+app:
+  jwt:
+    secret: CamiloNavarrete_9xF7qPzL8dWcT3MvKgYuR0HbE5NsJaX1
+    expiration: 86400000 # 24 horas
+  
+  #Configuracion de regex para contraseña
+  password-regex: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$"
+  password-message: "Password must have at least 8 characters, one uppercase, one lowercase and one number"
+  
+  #Configuracion de regex para email
+  email-regex: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+
+logging:
+  level:
+    com.camilonavarrete: DEBUG
+    org.springframework.web: DEBUG
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    url: /openapi.yml
+    path: /swagger-ui.html
+  info:
+    title: Evaluación
+    description: API evaluación Camilo Navarrete
+    version: 1.0.0
+    license:
+      name: MIT
+      url: https://opensource.org/licenses/MIT
+
+server:
+  port: 8080

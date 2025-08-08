@@ -1,0 +1,171 @@
+openapi: 3.0.0
+info:
+  title: Evaluación
+  description: API evaluación Camilo Navarrete
+  version: 1.0.0
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: http://localhost:8080
+    description: API Evaluacion
+paths:
+  /users:
+    post:
+      summary: Register new user
+      description: Create a new user with name, email, password and list of phones.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - email
+                - password
+              properties:
+                name:
+                  type: string
+                  example: Camilo Navarrete
+                email:
+                  type: string
+                  format: email
+                  example: camilonavarrete@gmail.com
+                password:
+                  type: string
+                  example: Evaluacion123
+                phones:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      number:
+                        type: string
+                        example: "12345678"
+                      citycode:
+                        type: string
+                        example: "2"
+                      contrycode:
+                        type: string
+                        example: "58"
+            examples:
+              EjemploRegistro:
+                summary: Example of valid registration
+                value:
+                  name: "Camilo Navarrete"
+                  email: "camilonavarrete@gmail.com"
+                  password: "Evaluacion123"
+                  phones:
+                    - number: "12345678"
+                      citycode: "2"
+                      contrycode: "58"
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    example: a0f8a8b8-78d2-46b8-a6a4-345b7d9d2e1c
+                  created:
+                    type: string
+                    format: date-time
+                    example: "2025-08-08T12:00:00Z"
+                  modified:
+                    type: string
+                    format: date-time
+                    example: "2025-08-08T12:00:00Z"
+                  last_login:
+                    type: string
+                    format: date-time
+                    example: "2025-08-08T12:00:00Z"
+                  token:
+                    type: string
+                    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.xxxxx"
+                  isActive:
+                    type: boolean
+                    example: true
+                  name:
+                    type: string
+                    example: "Camilo Navarrete"
+                  email:
+                    type: string
+                    example: "camilonavarrete@gmail.com"
+                  password:
+                    type: string
+                    example: "********"
+                  phones:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        number:
+                          type: string
+                        citycode:
+                          type: string
+                        contrycode:
+                          type: string
+              examples:
+                EjemploExito:
+                  summary: Success
+                  value:
+                    id: "a0f8a8b8-78d2-46b8-a6a4-345b7d9d2e1c"
+                    created: "2025-08-08T12:00:00Z"
+                    modified: "2025-08-08T12:00:00Z"
+                    last_login: "2025-08-08T12:00:00Z"
+                    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.xxxxx"
+                    isActive: true
+                    name: "Camilo Navarrete"
+                    email: "camilonavarrete@gmail.com"
+                    password: "********"
+                    phones:
+                      - number: "12345678"
+                        citycode: "2"
+                        contrycode: "58"
+        '400':
+          description: Invalid data (email or password)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mensaje:
+                    type: string
+              examples:
+                EmailInvalido:
+                  summary: Invalid email format
+                  value: { "mensaje": "Email must have valid format" }
+                PasswordInvalida:
+                  summary: Invalid password format
+                  value: { "mensaje": "Password must have at least 8 characters, one uppercase, one lowercase and one number" }
+        '409':
+          description: Email already exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mensaje:
+                    type: string
+              examples:
+                YaRegistrado:
+                  summary: Email already exists
+                  value: { "mensaje": "Email already exists" }
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mensaje:
+                    type: string
+              examples:
+                ErrorInterno:
+                  summary: Internal server error
+                  value: { "mensaje": "Internal server error" }
