@@ -74,43 +74,41 @@ src/
 
 ### Registrar un nuevo usuario
 
-```http
-POST /users
-Content-Type: application/json
-
-{
-  "name": "Nombre Apellido",
-  "email": "usuario@ejemplo.com",
-  "password": "Contraseña123",
+```curl --location 'localhost:8080/users' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "name": "Camilo Navarrete",
+  "email": "camilonavarrete@gmail.com",
+  "password": "Camilo123",
   "phones": [
     {
-      "number": "12345678",
-      "citycode": "1",
-      "contrycode": "57"
+      "number": "000000",
+      "citycode": "2",
+      "contrycode": "32"
     }
   ]
-}
+}'
 ```
 
 ### Respuesta exitosa
 
 ```json
 {
-  "id": "a0f8a8b8-78d2-46b8-a6a4-345b7d9d2e1c",
-  "name": "Nombre Apellido",
-  "email": "usuario@ejemplo.com",
-  "phones": [
-    {
-      "number": "12345678",
-      "citycode": "1",
-      "contrycode": "57"
-    }
-  ],
-  "created": "2025-08-08T12:00:00Z",
-  "modified": "2025-08-08T12:00:00Z",
-  "last_login": "2025-08-08T12:00:00Z",
-  "token": "eyJhbGciOiJIUzI1NiJ9...",
-  "isactive": true
+    "id": "d4fef125-8a16-46fe-a342-cf011fce26e0",
+    "name": "Camilo Navarrete",
+    "email": "camilonavarrete@gmail.com",
+    "phones": [
+        {
+            "number": "000000",
+            "citycode": "2",
+            "contrycode": "32"
+        }
+    ],
+    "created": "2025-08-08T16:37:30.096287",
+    "modified": "2025-08-08T16:37:30.096307",
+    "last_login": "2025-08-08T16:37:30.09171",
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYW1pbG9uYXZhcnJldGVAZ21haWwuY29tIiwiaWF0IjoxNzU0Njg1NDUwLCJleHAiOjE3NTQ3NzE4NTB9.X8J_Qy6vqLTROmAcMOYdfMHqUPTQtMBCv3mxBC93CEo",
+    "isactive": true
 }
 ```
 
@@ -122,10 +120,6 @@ Content-Type: application/json
   - Al menos una letra mayúscula
   - Al menos un número
   - Al menos un carácter especial
-- **Teléfono**:
-  - Número: Hasta 10 dígitos
-  - Código de ciudad: Hasta 2 dígitos
-  - Código de país: Hasta 3 dígitos
 
 ## Pruebas
 
