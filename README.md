@@ -123,7 +123,6 @@ curl --location 'localhost:8080/users' \
   - Mínimo 8 caracteres
   - Al menos una letra mayúscula
   - Al menos un número
-  - Al menos un carácter especial
 
 ## Pruebas
 
