@@ -1,4 +1,4 @@
-# Evaluación - API de Gestión de Usuarios
+# Evaluación - API de Creacion de usuarios.
 
 API RESTful para la creacion de usuarios con autenticación JWT, desarrollada con Spring Boot 3.x.
 
@@ -11,12 +11,11 @@ API RESTful para la creacion de usuarios con autenticación JWT, desarrollada co
 - Documentación con OpenAPI 3.0 (Swagger UI)
 - Manejo centralizado de excepciones
 - Validación de datos de entrada
-- Logging de operaciones
 
 ## Requisitos Previos
 
 - Java 21 o superior
-- Maven 3.6 o superior
+- Gradle 8.0 o superior
 - Spring Boot 3.5.4
 
 ## Configuración
@@ -74,7 +73,8 @@ src/
 
 ### Registrar un nuevo usuario
 
-```curl --location 'localhost:8080/users' \
+```bash
+curl --location 'localhost:8080/users' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "name": "Camilo Navarrete",
@@ -136,4 +136,4 @@ Este proyecto está bajo la licencia MIT. Ver el archivo [LICENSE](LICENSE) para
 ## Autor
 
 Camilo Navarrete  
-[camilonavarrete@gmail.com](mailto:camilonavarrete@gmail.com)
+[camilonavarreteportino@gmail.com](mailto:camilonavarreteportino@gmail.com)
