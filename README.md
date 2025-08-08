@@ -23,7 +23,7 @@ API RESTful para la creacion de usuarios con autenticación JWT, desarrollada co
 
 1. Clonar el repositorio:
    ```bash
-   git clone [URL_DEL_REPOSITORIO]
+   git clone git@github.com:CryNoF/evaluacion.git
    cd evaluacion
    ```
 
